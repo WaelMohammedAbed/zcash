@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/', 'hierarchy@test');
+Route::get('/', function (Request $request) {
+    return "Only Post method can be requested from this api";
 });
-Route::post('/hierarchy', 'hierarchy@test');
