@@ -17,3 +17,8 @@ Route::post('/', 'hierarchy@test');
 Route::get('/', function (Request $request) {
     return "Only Post method can be requested from this api";
 });
+/// same solution with detect loops and not unique names
+Route::post('/bonus', 'hierarchy@bonus');
+Route::get('/bonus', function (Request $request) {
+    return "Only Post method can be requested from this api";
+});

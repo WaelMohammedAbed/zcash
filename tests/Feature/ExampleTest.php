@@ -39,4 +39,21 @@ class ExampleTest extends TestCase
                             ]
                           ]);
     }
+    public function testBonusTest()
+    {
+      $response = $this->json('POST', '/api/bonus',
+        ["Pete"=> "Nick",
+           "Barbara"=> "Nick",
+           "Nick"=> "Sophie",
+           "Sophie"=> "Jonas",
+           "Jonas"=> "Sophie"]);
+
+
+
+        $response
+            ->assertStatus(200)
+            ->assertJson(['error' => true,
+                          'message'=>"either loop found or not unique names"
+                        ]);
+    }
 }
