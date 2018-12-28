@@ -14,8 +14,29 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
+      $response = $this->json('POST', '/api/',
+        ["Pete"=> "Nick",
+           "Barbara"=> "Nick",
+           "Nick"=> "Sophie",
+           "Sophie"=> "Jonas"]);
 
-        $response->assertStatus(200);
+
+
+        $response
+            ->assertStatus(200)
+            ->assertJson(['Jonas' => [
+                                'Sophie' => [
+
+                                        'Nick' => [
+                                                'Pete' => [],
+
+                                                'Barbara' => []
+
+                                            ]
+
+                                    ]
+
+                            ]
+                          ]);
     }
 }
